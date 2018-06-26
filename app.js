@@ -39,7 +39,7 @@ app.controller('addCtrl', function($scope, $http) {
 	} else {
     //do nothing and go back to index page, or stay on add page ill think about it
 	}
-	window.location.href = "https://cfrench229.github.io/index.html#!/table";	
+	window.location.href = "https://cfrench229.github.io/awato/#!/table";	
    	} 	
 });
 //for some reason it works
