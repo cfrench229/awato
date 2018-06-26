@@ -129,6 +129,7 @@ app.controller('getCtrl', function($scope, $http){
    			 "cache-control": "no-cache"
  				}
     		}).then(function mySuccess(response) {
+		window.location.href = "/";
     		window.location.reload();
     		}, function myError(response) {  
     	});	
