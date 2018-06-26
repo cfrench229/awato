@@ -39,7 +39,7 @@ app.controller('addCtrl', function($scope, $http) {
 	} else {
     //do nothing and go back to index page, or stay on add page ill think about it
 	}
-	window.location.href = "/";	
+	window.location.href = "/table";	
    	} 	
 });
 //for some reason it works
@@ -129,7 +129,6 @@ app.controller('getCtrl', function($scope, $http){
    			 "cache-control": "no-cache"
  				}
     		}).then(function mySuccess(response) {
-		window.location.href = "/";
     		window.location.reload();
     		}, function myError(response) {  
     	});	
