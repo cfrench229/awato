@@ -15,7 +15,7 @@ app.config(function($routeProvider) {
 app.controller('addCtrl', function($scope, $http) {
 	/*Function is called when a user clicks the submit button*/
 	$scope.myFunc = function () {
-	if (confirm('Are you sure you want to save this this breed into the database?')) {
+	if (confirm('Are you sure you want to save this breed into the database?')) {
     var jsondata = {breed: $scope.breed,description: $scope.description,size: $scope.size,
    					lifespan: $scope.lifespanStart+"-"+$scope.lifespanEnd+" Years"};
     	$http({
