@@ -39,7 +39,7 @@ app.controller('addCtrl', function($scope, $http) {
 	} else {
     //do nothing and go back to index page, or stay on add page ill think about it
 	}
-	window.location.href = "/table";	
+	window.location.href = "/table.html";	
    	} 	
 });
 //for some reason it works
