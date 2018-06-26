@@ -1,0 +1,24 @@
+<h2 align="center">Index of the Breeds</h2>
+	<input type="text" id="myInput" ng-keyup="search()" placeholder="Search by Breed..">
+	<br></br>
+	<div id="cardHolder" align="left" class="table-responsive">
+    	<table id="dogs" class="table table-striped">
+     		<th>Information</th>
+     		<th>Breed</th>
+     		<th>Size</th>
+     		<th>Life Span</th>
+     		<th>Description</th>
+     		<th>Delete Breed?</th>
+  				<tr ng-repeat="x in success">
+  					<td ng-show="false"> {{ x._id }}</td>
+  					<td><button type="button" class="btn btn-info" data-ng-click="select($index)" 
+  					onClick="document.getElementById('info').scrollIntoView();">Info</button></td>
+   					<td>{{ x.breed }}</td>
+   					<td>{{ x.size }}</td>
+    				<td>{{ x.lifespan}}</td>
+    				<td class="ellipsis">{{x.description}}</td>
+    				<td><button type="button" class="btn btn-danger" data-ng-click="Delete($index)">
+    				Delete</button></td>
+  				</tr>
+		</table>
+</div>
