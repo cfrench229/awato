@@ -26,12 +26,6 @@
       background: #3361FF;
       opacity: .9;
   }
-  
-  .leftContain {
-      background: #CBCBCB;
-      opacity: .9;
-  }
-  
   .ellipsis {
     max-width: 150px;
     text-overflow: ellipsis;
@@ -76,9 +70,9 @@
   <h1 align="center">Thank you!</h1>.  
 </div>
 <!-- this could be when you select a dog breed, you view all the information about it -->
-<div class="container-fluid" ng-controller="tableCtrl">
+<div class="container-fluid bg-light" ng-controller="tableCtrl">
   <div id="info" class="row">
-    <div class="col-sm-4 leftContain" ng-show="showDetails">
+    <div class="col-sm-4" ng-show="showDetails">
       <h1>{{breedName}}</h1>
       	<div class="fakeimg text-white">Ideally would be the picture of the dog</div>
       	<p>Name: <span>{{breedName}}</span></p>
