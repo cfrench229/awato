@@ -1,0 +1,52 @@
+<html>
+	<div class="container-fluid">
+  	<h2>Add a new Breed</h2>
+  	<form ng-controller="addCtrl">
+  		<div class="form-group">
+    		<label>Breed:</label>
+    		<input type="text" ng-model="breed" placeholder="Labrador Retriever">
+  		</div>
+  		<div class="form-group">
+   			 <label>Description:</label>
+    		 <input type="text" ng-model="description" placeholder="A common pet...">
+  		</div>
+  		<div class="form-group">
+   		 	 <label>Size: </label>
+    		 <select ng-model="size">
+    			<option value="">
+    			<option value="Small">Small
+    			<option value="Medium">Medium
+    			<option value="Large">Large
+			 </select>
+  		</div>
+  		<div class="form-group">
+    		 <label>Life Span:</label>
+    		 <select ng-model="lifespanStart" ng-model="mySwitch" ng-click="checkNum(lifespanStart)">
+    			<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+			 </select> 
+			-<select ng-model="lifespanEnd" ng-options="x for x in arr" ng-disabled="mySwitch"></select>
+  		</div>
+  	<button type="submit" class="btn btn-primary" ng-click="myFunc()">Submit</button>
+   </form>
+   </div>
+</html>
+
