@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Campbell French's Awato Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <script src="https://awatoproject-1698.restdb.io/assets/js/eventsource.min.js"></script>
+  <script src="https://awatoproject-1698.restdb.io/rest/_jsapi.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #3361FF;
+  }
+  .headerContain {
+      background: #3361FF;
+      opacity: .75;
+  }
+  .navContain {
+      background: #3361FF;
+      opacity: .9;
+  }
+  
+  .leftContain {
+      background: #CBCBCB;
+      opacity: .9;
+  }
+  
+  .ellipsis {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  #cardHolder{
+  	border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+	}
+  </style>
+</head>
+<body ng-app="myApp">
+
+<div class="jumbotron jumbotron-fluid headerContain text-white text-center" style="margin-bottom:0">
+  <h1>Awato Project: Dog Breeds</h1>
+  <p>Campbell French</p> 
+</div>
+<!-- put links to index and add form here -->
+<nav class="navbar navbar-expand-sm navContain justify-content-center sticky-top">
+  <ul class="navbar-nav justify-content-center">
+  <li class="nav-item">
+      <a class="nav-link text-white" href="#!/" ng-click="showDetails = false; show = true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#!table" ng-click="showDetails = true; show = false">Index</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#!form" ng-click="showDetails = false; show=false">Add Breed</a>
+    </li>
+  </ul>
+</nav>
+
+<div ng-show = "show">
+  <h1 align="center">Welcome to my project!</hi>
+  <br>To view the index, click the "Index" tab</br>
+  <br>To add a breed to the database, please click "Add Breed"</br>
+  <br>Otherwise, click "Home" to return to this page</br>
+  <h1 align="center">Thank you!</h1>.  
+</div>
+<!-- this could be when you select a dog breed, you view all the information about it -->
+<div class="container-fluid" ng-controller="tableCtrl">
+  <div id="info" class="row">
+    <div class="col-sm-4 leftContain" ng-show="showDetails">
+      <h5>{{breedName}}</h5>
+      	<div class="fakeimg text-white">Ideally would be the picture of the dog</div>
+      	<p>Name: <span>{{breedName}}</span></p>
+      	<p>Size: <span>{{breedSize}}</span></p>
+      	<p>Life Span: <span>{{breedLife}}</span></p>
+      	<p>Description: <span>{{breedDescript}}</span></p>
+      	<hr class="d-sm-none">
+    </div>
+<!-- this could be where the index stays so you can select different ones and itll give different values -->
+    	<div class="col-sm-8" ng-controller="getCtrl">
+			<div ng-view></div>
+    	</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
