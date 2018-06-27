@@ -1,5 +1,5 @@
 var app = angular.module('myApp', ["ngRoute"]);
-
+//router
 app.config(function($routeProvider) {
     $routeProvider
     .when("/form", {
@@ -11,10 +11,22 @@ app.config(function($routeProvider) {
     .otherwise({redirectTo:'/'});
 });
 
-/*Controller that deals with adding data to the database*/
+//Controller that deals with adding data to the database
 app.controller('addCtrl', function($scope, $http) {
-	/*Function is called when a user clicks the submit button*/
+//function to eliminate lifespan dropdown numbers
+$scope.arr = [];
+$scope.mySwitch = true;
+$scope.checkNum = function(lifespanStart) {
+	$scope.mySwitch=false;
+	$scope.arr=[];
+	for(var i = ++lifespanStart; i <= 20; i++) {
+		$scope.arr.push(i);
+	}
+}
+
+	//Function is called when a user clicks the submit button
 	$scope.myFunc = function () {
+	//if we want to add to the database, then proceed
 	if (confirm('Are you sure you want to save this breed into the database?')) {
     var jsondata = {breed: $scope.breed,description: $scope.description,size: $scope.size,
    					lifespan: $scope.lifespanStart+"-"+$scope.lifespanEnd+" Years"};
@@ -37,22 +49,13 @@ app.controller('addCtrl', function($scope, $http) {
 		});
 			
 	} else {
-    //do nothing and go back to index page, or stay on add page ill think about it
+    //otherwise cancel the add 
 	}
 	window.location.href = "https://cfrench229.github.io/awato/#!/table";	
    	} 	
 });
-//for some reason it works
+
 app.controller('tableCtrl', function($scope) {
-$scope.arr = [];
-$scope.mySwitch = true;
-$scope.checkNum = function(lifespanStart) {
-	$scope.mySwitch=false;
-	$scope.arr=[];
-	for(var i = ++lifespanStart; i <= 20; i++) {
-		$scope.arr.push(i);
-	}
-}
 
 $scope.search = function() {
   // Declare variables 
