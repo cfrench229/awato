@@ -1,0 +1,24 @@
+.fakeimg {
+      height: 200px;
+      background: #3361FF;
+}
+.headerContain {
+      background: #3361FF;
+      opacity: .75;
+}
+.navContain {
+      background: #3361FF;
+      opacity: .9;
+}
+.descriptMax {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#cardHolder{
+  	border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+}
