@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -13,41 +14,15 @@
   <script src="https://awatoproject-1698.restdb.io/assets/js/eventsource.min.js"></script>
   <script src="https://awatoproject-1698.restdb.io/rest/_jsapi.js"></script>
   <script type="text/javascript" src="app.js"></script>
-  <style>
-  .fakeimg {
-      height: 200px;
-      background: #3361FF;
-  }
-  .headerContain {
-      background: #3361FF;
-      opacity: .75;
-  }
-  .navContain {
-      background: #3361FF;
-      opacity: .9;
-  }
-  .ellipsis {
-    max-width: 150px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  #cardHolder{
-  	border-collapse: collapse; /* Collapse borders */
-    width: 100%; /* Full-width */
-    border: 1px solid #ddd; /* Add a grey border */
-    font-size: 18px; /* Increase font-size */
-	}
-  </style>
 </head>
 <body ng-app="myApp">
 
 <div class="jumbotron jumbotron-fluid headerContain text-white text-center" style="margin-bottom:0">
   <h1>Awato Project: Dog Breeds</h1>
   <h2>Campbell French</h2> 
-  <p>Please click home to begin</p> 
+  <p>Please click home to begin</p>
 </div>
-<!-- put links to index and add form here -->
+
 <nav class="navbar navbar-expand-sm navContain justify-content-center sticky-top">
   <ul class="navbar-nav justify-content-center">
   <li class="nav-item">
@@ -62,26 +37,27 @@
   </ul>
 </nav>
 
-<div ng-show = "show">
+<div ng-show= "show">
   <h1 align="center">Welcome to my project!</hi>
   <br>To view the index, click the "Index" tab</br>
   <br>To add a breed to the database, please click "Add Breed"</br>
   <br>Otherwise, click "Home" to return to this page</br>
   <h1 align="center">Thank you!</h1>.  
 </div>
-<!-- this could be when you select a dog breed, you view all the information about it -->
+
 <div class="container-fluid bg-light" ng-controller="tableCtrl">
   <div id="info" class="row">
-    <div class="col-sm-4" ng-show="showDetails">
+  <!-- left coloum which displays more about the dog breed-->
+    <div class="col-sm-4 leftContain" ng-show="showDetails">
       <h1>{{breedName}}</h1>
       	<div class="fakeimg text-white">Ideally would be the picture of the dog</div>
-	<h3>Name:</h3><p><span>{{breedName}}</span></p>
-      	<h3>Size:</h3><p> <span>{{breedSize}}</span></p>
-      	<h3>Life Span:</h3><p> <span>{{breedLife}}</span></p>
-      	<h3>Description:</h3><p> <span>{{breedDescript}}</span></p>
+      	<p>Name: <span>{{breedName}}</span></p>
+      	<p>Size: <span>{{breedSize}}</span></p>
+      	<p>Life Span: <span>{{breedLife}}</span></p>
+      	<p>Description: <span>{{breedDescript}}</span></p>
       	<hr class="d-sm-none">
     </div>
-<!-- this could be where the index stays so you can select different ones and itll give different values -->
+<!-- right column that displays the index or the add form -->
     	<div class="col-sm-8" ng-controller="getCtrl">
 			<div ng-view></div>
     	</div>
