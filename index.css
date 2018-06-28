@@ -10,7 +10,7 @@
       background: #3361FF;
       opacity: .9;
 }
-.descriptMax {
+.ellipsis {
     max-width: 150px;
     text-overflow: ellipsis;
     overflow: hidden;
