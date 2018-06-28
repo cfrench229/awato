@@ -1,5 +1,6 @@
+//Module
 var app = angular.module('myApp', ["ngRoute"]);
-//router
+//Configuring the routing
 app.config(function($routeProvider) {
     $routeProvider
     .when("/form", {
@@ -11,25 +12,26 @@ app.config(function($routeProvider) {
     .otherwise({redirectTo:'/'});
 });
 
-//Controller that deals with adding data to the database
+//Controller that deals with adding breeds to the database
 app.controller('addCtrl', function($scope, $http) {
-//function to eliminate lifespan dropdown numbers
+//Function to eliminate lifespan dropdown numbers
 	$scope.arr = [];
-	$scope.mySwitch = true;
+	$scope.lifeSwitch = true;
 	$scope.checkNum = function(lifespanStart) {
-	$scope.mySwitch=false;
+	$scope.lifeSwitch=false;
 	$scope.arr=[];
 		for(var i = ++lifespanStart; i <= 20; i++) {
 			$scope.arr.push(i);
 		}	
 	}
 
-	//Function is called when a user clicks the submit button
-	$scope.myFunc = function () {
-	//if we want to add to the database, then proceed
+//Adds the breed to the database. Only is called when user clicks the submit button
+	$scope.addBreed = function () {
+//If we want to add to the database, then continue getting information about breed
 		if (confirm('Are you sure you want to save this breed into the database?')) {
     		var jsondata = {breed: $scope.breed,description: $scope.description,size: $scope.size,
    					lifespan: $scope.lifespanStart+"-"+$scope.lifespanEnd+" Years"};
+   			//The actual database call
     		$http({
     			async: true,
     			crossDomain: true,
@@ -44,28 +46,31 @@ app.controller('addCtrl', function($scope, $http) {
   				data: JSON.stringify(jsondata)
 				})
        			.then(function mySuccess(response) {
+       			//If our promise was fulfilled, then reload the page so it will update
+       			//when we opne the index again
        				window.location.reload();
     			}, function myError(response) {  
 			});	
 		} else {
-    		//otherwise cancel the add 
+    		//Otherwise cancel the add request, and go back to the index 
 		}
+			//Either way, we go back to the index
 			window.location.href = "https://cfrench229.github.io/awato/#!/table";	
    	} 	
 });
 
-//Controller to deal with the table
+//Controller to deal with the actual table information
 app.controller('tableCtrl', function($scope) {
-//searches the table for breeds based on inputs
-	$scope.search = function() {
- 		 // Declare variables 
+//Searches the table for breeds based on inputs *Taken from W3.Schools.com*
+	$scope.Search = function() {
+//Declare variables 
 	var input, filter, table, tr, td, i;
   	input = document.getElementById("myInput");
   	filter = input.value.toUpperCase();
   	table = document.getElementById("dogs");
   	tr = table.getElementsByTagName("tr");
 
-  		// Loop through all table rows, and hide those who don't match the search query
+//Loop through all table rows, and hide those who don't match the search
   	for (i = 0; i < tr.length; i++) {
    		td = tr[i].getElementsByTagName("td")[2];
     		if (td) {
@@ -77,12 +82,12 @@ app.controller('tableCtrl', function($scope) {
     		} 
   		}
 	};
-//show data about the selected dog breed
+//Show data about the selected dog breed
 	$scope.breedName = null;
 	$scope.breedSize = null;
 	$scope.breedLife = null;
 	$scope.breedDescript = null;
-	$scope.select = function(index) {
+	$scope.Select = function(index) {
 		var tabl = document.getElementById('dogs');
 		$scope.breedName =  String(tabl.rows[index+1].cells[2].innerHTML);
 		$scope.breedSize =  String(tabl.rows[index+1].cells[3].innerHTML);
@@ -91,9 +96,9 @@ app.controller('tableCtrl', function($scope) {
 	};
 });
 
-//Controller that gets information from database
+//Controller that gets information from database, and deletes from the database
 app.controller('getCtrl', function($scope, $http){
-//call add in a function on page load
+//Actual add call to the database
      $http({
         async: true,
         crossDomain: true,
@@ -105,22 +110,24 @@ app.controller('getCtrl', function($scope, $http){
             "cache-control": "no-cache"
         }
     }).then(function mySuccess(response) {
+//If our promise was fulfilled, then the return is our data we need
         $scope.success = response.data;
     }, function myError(response) {  
     }); 
-//deletes selected breed from the database
+//Deletes selected breed from the database
 	$scope.Delete = function(index) {
-	//if they select yes, delete it
+//If we really want to, then continue
 		if (confirm('Are you sure you want to delete this breed from the database?')) {
+//Gets information from the selected row, and use object id to delete from the database	
     		var table = document.getElementById('dogs');
-    		var id = table.rows[index+1].cells[0].innerHTML;
-    		var temp = String(id);
-    		var str = temp.trim();
-    		var t = String(str);
+    		var objId = table.rows[index+1].cells[0].innerHTML;
+    		var strId = String(objId);
+    		var strUrl = strId.trim();
+    		var del = String(strUrl);
 				$http({
        				async: true,
  					crossDomain: true,
- 					url: "https://awatoproject-1698.restdb.io/rest/dogs/"+t,
+ 					url: "https://awatoproject-1698.restdb.io/rest/dogs/"+del,
  					method: "DELETE",
  					headers: {
    			 		"content-type": "application/json",
@@ -132,7 +139,7 @@ app.controller('getCtrl', function($scope, $http){
     			}, function myError(response) {  
     		});	
 		} else {
-    		//otherwise do nothing and stay on the page
+//Otherwise, just stay on the index page
 		}			
 	};
 });  
