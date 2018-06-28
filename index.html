@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!-- Author: Campbell French -->
 <html lang="en">
 <head>
   <title>Campbell French's Awato Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- All of the scripts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,38 +18,39 @@
   <script type="text/javascript" src="app.js"></script>
 </head>
 <body ng-app="myApp">
-
+<!-- The header -->
 <div class="jumbotron jumbotron-fluid headerContain text-white text-center" style="margin-bottom:0">
-  <h1>Awato Project: Dog Breeds</h1>
-  <h2>Campbell French</h2> 
-  <p>Please click home to begin</p>
+  	<h1>Awato Project: Dog Breeds</h1>
+  	<h2>Campbell French</h2> 
+  	<p>Please click home to begin</p>
 </div>
-
+<!-- The navigation bar -->
 <nav class="navbar navbar-expand-sm navContain justify-content-center sticky-top">
   <ul class="navbar-nav justify-content-center">
-  <li class="nav-item">
-      <a class="nav-link text-white" href="#!/" ng-click="showDetails = false; show = true">Home</a>
+  	<li class="nav-item">
+      	<a class="nav-link text-white" href="#!/" ng-click="showDetails=false; showWel=true">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#!table" ng-click="showDetails = true; show = false">Index</a>
+      	<a class="nav-link text-white" href="#!table" ng-click="showDetails=true; showWel=false">Index</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#!form" ng-click="showDetails = false; show=false">Add Breed</a>
+      	<a class="nav-link text-white" href="#!form" ng-click="showDetails=false; showWel=false">Add Breed</a>
     </li>
   </ul>
 </nav>
-
-<div ng-show= "show">
+<!-- The shows up if you click the welcome *Buggy due to logic reasons, such as if you
+     load the index page, it will show up until you click a link -->
+<div ng-show= "showWel">
   <h1 align="center">Welcome to my project!</hi>
   <br>To view the index, click the "Index" tab</br>
   <br>To add a breed to the database, please click "Add Breed"</br>
   <br>Otherwise, click "Home" to return to this page</br>
   <h1 align="center">Thank you!</h1>.  
 </div>
-
+<!-- Container that holds our two columns -->
 <div class="container-fluid bg-light" ng-controller="tableCtrl">
   <div id="info" class="row">
-  <!-- left coloum which displays more about the dog breed-->
+  <!-- Left column that hold the details of the breed-->
     <div class="col-sm-4 leftContain" ng-show="showDetails">
       <h1>{{breedName}}</h1>
       	<div class="fakeimg text-white">Ideally would be the picture of the dog</div>
@@ -57,7 +60,7 @@
       	<p>Description: <span>{{breedDescript}}</span></p>
       	<hr class="d-sm-none">
     </div>
-<!-- right column that displays the index or the add form -->
+<!-- Right column that displays either the index or the add form, depending on the view -->
     	<div class="col-sm-8" ng-controller="getCtrl">
 			<div ng-view></div>
     	</div>
